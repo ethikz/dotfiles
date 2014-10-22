@@ -106,6 +106,12 @@ let g:airline_theme             = 'powerlineish'
 let g:ctrlp_custom_ignore = 'node_modules\|git'
 
 
+""""""""""""""""""""""""""""""
+" => NERDTree
+""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=1
+
+
 """""""""""""""""""""""""""""
 " => JS2Coffee
 """""""""""""""""""""""""""""
