@@ -16,10 +16,6 @@ POWERLINE_GIT_UNTRACKED="🙈"
 POWERLINE_GIT_RENAMED="🔠"
 POWERLINE_GIT_UNMERGED="➖"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -61,22 +57,15 @@ bindkey '^F' history-incremental-search-forward
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 # Customize to your needs...
-export PATH=$PATH:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/mysql/bin:/usr/local/sbin:/usr/local/git/bin:/bin/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib:/opt/bin
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-alias playbook="ssh chris@development.playbook.sbox.es"
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias ms-start= 'mysql.server start'
 alias ms-stop='mysql.server stop'
 alias be='bundle exec '
 alias rp='source ~/.profile'
-alias atom='/Applications/Atom.app/Contents/MacOS/Atom'
-alias betty="~/Documents/Development/betty/main.rb"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
+
