@@ -103,7 +103,8 @@ let g:airline_theme             = 'powerlineish'
 """"""""""""""""""""""""""""""
 " => CtrlP 
 """"""""""""""""""""""""""""""
-let g:ctrlp_custom_ignore = 'node_modules\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|git|.DS_Store'
+let g:ctrlp_show_hidden = 1
 
 
 """"""""""""""""""""""""""""""
@@ -123,5 +124,5 @@ nnoremap<Leader>bs :JSSelection2Coffee<CR>
 """"""""""""""""""""""""""""
 " => CSSComb
 """"""""""""""""""""""""""""
-nnoremap<Leader>cs :CSScomb<CR>
+nnoremap<Leader>css :CSScomb<CR>
 
