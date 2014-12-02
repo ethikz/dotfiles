@@ -57,7 +57,10 @@ bindkey '^F' history-incremental-search-forward
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$HOME/.linuxbrew/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+[[ -s '$HOME/.rvm/scripts/rvm' ]] && source '$HOME/.rvm/scripts/rvm'
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
