@@ -58,13 +58,18 @@ export BUNDLER_EDITOR=vim
 export EDITOR=vim
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export MONO_GAC_PREFIX=/usr/local
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias ms-start= 'mysql.server start'
 alias ms-stop='mysql.server stop'
-alias be='bundle exec '
 alias rp='source ~/.profile'
+alias be='bundle exec '
+alias reset='rake db:reset'
+alias migrate='rake db:migrate'
+alias seed='rake db:seed'
+alias ec='/Applications/eclipse/eclimd'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
