@@ -36,6 +36,7 @@ set paste                     " Paste text unmodified
 set pastetoggle=<F3>          " Toggle paste and nopaste
 set nocompatible              " vim, not vi
 set ttyfast                   " Fast terminal
+set backspace=2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -103,7 +104,7 @@ let g:airline_theme             = 'powerlineish'
 """"""""""""""""""""""""""""""
 " => CtrlP 
 """"""""""""""""""""""""""""""
-let g:ctrlp_custom_ignore = 'node_modules\|git|.DS_Store'
+let g:ctrlp_custom_ignore = 'node_modules\|git|.DS_Store|.git'
 let g:ctrlp_show_hidden = 1
 
 
