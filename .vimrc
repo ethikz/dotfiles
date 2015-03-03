@@ -22,6 +22,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'JarrodCTaylor/vim-js2coffee'
 Plugin 'benmills/vimux'
+Plugin 'groenewege/vim-less'
 call vundle#end()
 syntax on
 
