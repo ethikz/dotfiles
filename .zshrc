@@ -56,8 +56,12 @@ bindkey '^F' history-incremental-search-forward
 
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
+export MAVEN_HOME='/Users/jchris/Development/apache-maven-3.2.5/'
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export MAVEN_OPTS='-Xmx2048m'
+
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin:$MAVEN_HOME/bin:$JAVA_HOME/bin
 export MONO_GAC_PREFIX=/usr/local
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -70,6 +74,12 @@ alias reset='rake db:reset'
 alias migrate='rake db:migrate'
 alias seed='rake db:seed'
 alias ec='/Applications/eclipse/eclimd'
+alias tc-start='/Users/jchris/Development/apache-tomcat-7.0.59/bin/startup.sh'
+alias tc-stop='/Users/jchris/Development/apache-tomcat-7.0.59/bin/shutdown.sh'
+alias tc-log='tail -f /Users/jchris/Development/apache-tomcat-7.0.59/logs/catalina.out'
+alias tc-restart='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}"); tc-start; tc-log'
+alias etix-lib='pushd /Users/jchris/Development/eTix/etix/web/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-etix/WEB-INF/lib/ lib; popd'
+alias build='mvn package war:exploded'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
