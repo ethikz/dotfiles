@@ -23,6 +23,7 @@ Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'JarrodCTaylor/vim-js2coffee'
 Plugin 'benmills/vimux'
 Plugin 'groenewege/vim-less'
+Plugin 'cakebaker/scss-syntax.vim'
 call vundle#end()
 syntax on
 
