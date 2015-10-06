@@ -56,9 +56,6 @@ bindkey '^F' history-incremental-search-forward
 
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
-export MAVEN_HOME='/Users/jchris/Development/apache-maven-3.2.5/'
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export MAVEN_OPTS='-Xmx2048m'
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/ruby-2.1.5/bin:$PATH
@@ -74,7 +71,6 @@ alias be='bundle exec '
 alias reset='rake db:reset'
 alias migrate='rake db:migrate'
 alias seed='rake db:seed'
-alias ec='/Applications/eclipse/eclimd'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
