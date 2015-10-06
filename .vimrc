@@ -24,6 +24,8 @@ Plugin 'JarrodCTaylor/vim-js2coffee'
 Plugin 'benmills/vimux'
 Plugin 'groenewege/vim-less'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'clausreinke/typescript-tools.vim'
+Plugin 'leafgarland/typescript-vim'
 call vundle#end()
 syntax on
 
@@ -132,3 +134,10 @@ nnoremap<Leader>bs :JSSelection2Coffee<CR>
 """"""""""""""""""""""""""""
 nnoremap<Leader>css :CSScomb<CR>
 
+""""""""""""""""""""""""""""
+" => TypeScript 
+""""""""""""""""""""""""""""
+let g:typescript_indent_disable = 1
+let g:typescript_compiler_options = '-sourcemap'
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow

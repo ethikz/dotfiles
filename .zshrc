@@ -61,27 +61,20 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 export MAVEN_OPTS='-Xmx2048m'
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.rvm/bin:$MAVEN_HOME/bin:$JAVA_HOME/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/ruby-2.1.5/bin:$PATH
 export MONO_GAC_PREFIX=/usr/local
 
-alias nw="/Applications/NodeJS/nwjs.app/Contents/MacOS/nwjs"
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias ms-start= 'mysql.server start'
+alias ms-start='mysql.server start'
 alias ms-stop='mysql.server stop'
+alias redis='nohup redis-server &'
 alias rp='source ~/.profile'
 alias be='bundle exec '
 alias reset='rake db:reset'
 alias migrate='rake db:migrate'
 alias seed='rake db:seed'
 alias ec='/Applications/eclipse/eclimd'
-alias tc-start='rm -f /Users/jchris/Development/apache-tomcat-7.0.59/logs/catalina.out; /Users/jchris/Development/apache-tomcat-7.0.59/bin/startup.sh'
-alias tc-stop='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}")'
-alias tc-log='tail -f /Users/jchris/Development/apache-tomcat-7.0.59/logs/catalina.out'
-alias tc-restart='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}"); tc-start; tc-log'
-alias etix-lib='pushd /Users/jchris/Development/eTix/etix/web/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-etix/WEB-INF/lib/ lib; popd'
-alias styleguide='pushd /Users/jchris/Development/eTix/etix/web/src/main/webapp/; ln -s ../../../target/web-etix/styleguide/ styleguide; popd'
-alias build='mvn package war:exploded -Dmaven.test.skip=true'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
