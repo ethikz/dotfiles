@@ -72,6 +72,7 @@ alias be='bundle exec '
 alias reset='rake db:reset'
 alias migrate='rake db:migrate'
 alias seed='rake db:seed'
+alias apack='apm list --installed --bare ~/Development/dotfiles/.atom/atom_packages.txt && cd ~/Development/dotfiles && git add .atom/atom_packages.txt && git commit -m "Updated packages" && git push'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
