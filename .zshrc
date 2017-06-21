@@ -54,12 +54,18 @@ bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
+latest_ruby="rvm list default string"
+
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/ruby-2.1.5/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/${latest_ruby}/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$PATH
+export LDFLAGS=-L/usr/local/opt/qt@5.5/lib
+export CPPFLAGS=-I/usr/local/opt/qt@5.5/include
+export PKG_CONFIG_PATH=/usr/local/opt/qt@5.5/lib/pkgconfig
 export MONO_GAC_PREFIX=/usr/local
+export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -72,6 +78,7 @@ alias be='bundle exec '
 alias reset='rake db:reset'
 alias migrate='rake db:migrate'
 alias seed='rake db:seed'
+alias gc='git clone'
 alias apack='apm list --installed --bare > ~/Development/dotfiles/.atom/atom_packages.txt && cd ~/Development/dotfiles && git add .atom/atom_packages.txt && git commit -m "Updated packages" && git push'
 
 # added by travis gem
