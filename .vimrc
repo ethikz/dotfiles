@@ -5,7 +5,7 @@ Plugin 'tpope/vim-rails.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'slim-template/vim-slim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Raimondi/delimitMate'
@@ -62,7 +62,10 @@ set number                    " Display line numbers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme molokai
+if filereadable( expand("$HOME/.vim/colors/railscast.vim") )
+  colorscheme molokai
+endif
+
 set background=dark
 set t_Co=256                  " 256 Colors
 syntax enable                 " Enable syntax highlighting
