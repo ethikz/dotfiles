@@ -52,8 +52,6 @@ bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
-latest_ruby="rvm list default string"
-
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 
