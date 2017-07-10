@@ -79,5 +79,5 @@ alias apack='apm list --installed --bare > ~/Development/dotfiles/.atom/atom_pac
 alias npmclean='rm -rf node_modules && npm install'
 
 # added by travis gem
-[ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
