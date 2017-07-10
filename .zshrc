@@ -76,6 +76,7 @@ alias migrate='rake db:migrate'
 alias seed='rake db:seed'
 alias gc='git clone'
 alias apack='apm list --installed --bare > ~/Development/dotfiles/.atom/atom_packages.txt && cd ~/Development/dotfiles && git add .atom/atom_packages.txt && git commit -m "Updated packages" && git push'
+alias npmplease='rm -rf node_modules/ && rm -f package-lock.json && npm install'
 
 # added by travis gem
 [ -f /Users/jchris/.travis/travis.sh ] && source /Users/jchris/.travis/travis.sh
