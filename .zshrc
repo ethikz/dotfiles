@@ -93,6 +93,7 @@ alias ds_delete="find . -name '*.DS_Store' -type f -delete"
 alias latest-ruby='prompt_ruby_info'
 alias apack='apm list --installed --bare > ~/Development/dotfiles/.atom/atom_packages.txt && cd ~/Development/dotfiles && git add .atom/atom_packages.txt && git commit -m "Updated packages" && git push'
 alias npmclean='rm -rf node_modules && npm install'
+alias gfr='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
