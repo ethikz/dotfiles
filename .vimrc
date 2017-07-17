@@ -27,6 +27,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'clausreinke/typescript-tools.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'koalaman/shellcheck'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 syntax on
 
