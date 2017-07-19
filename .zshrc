@@ -52,8 +52,6 @@ HISTTIMEFORMAT='';
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git atom vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-
 bindkey '^?' backward-delete-char
 bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
