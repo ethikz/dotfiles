@@ -1,0 +1,75 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: ""
+    html:
+      indent_inner_html: true
+  core:
+    customFileTypes:
+      "source.nunjucks": [
+        "nunj"
+      ]
+    excludeVcsIgnoredPaths: false
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      ".sass_cache"
+      ".DS_Store"
+    ]
+    reopenProjectMenuCount: 14
+    telemetryConsent: "no"
+    themes: [
+      "seti-ui"
+      "one-dark-syntax"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 2
+    tabType: "soft"
+  "exception-reporting":
+    userId: ""
+  "formatter-jsbeautify":
+    css:
+      enable: false
+    html:
+      enable: false
+    less:
+      enable: false
+    sass:
+      enable: false
+  "ftp-remote-edit":
+    config: ""
+    password: ""
+    reset: false
+  jsformat:
+    max_preserve_newlines: 2
+  "linter-sass-lint": {}
+  "linter-ui-default":
+    panelHeight: 36
+  "markdown-preview":
+    breakOnSingleNewline: true
+  "open-in-browsers":
+    BrowserPlus: false
+    IE: false
+    Opera: false
+  "save-session":
+    dataSaveFolder: "~/.atom/packages/save-session/projects"
+  "seti-ui":
+    themeColor: "Orange"
+  "sync-settings":
+    _lastBackupHash: ""
+    gistId: ""
+    personalAccessToken: ""
+  "tabs-to-spaces": {}
+  "tree-view":
+    alwaysOpenExisting: true
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
