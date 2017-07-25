@@ -51,7 +51,7 @@ HISTTIMEFORMAT='';
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(atom bundler django encode gem git git-extras github last-working-dir node npm osx pip python rails ruby rvm sudo vi-mode virtualenvwrapper web-search)
+plugins=(atom bundler django encode gem git git-extras github last-working-dir node npm osx pip rails ruby rvm sudo vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,17 +66,13 @@ export TERM=xterm
 export HISTCONTROL=ignoredups
 
 # Customize to your needs...
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/${latest_ruby}/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$VIRTUALENVWRAPPER_PYTHON:$VIRTUALENVWRAPPER_VIRTUALENV:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/${latest_ruby}/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$PATH
 export LDFLAGS=-L/usr/local/opt/qt@5.5/lib
 export CPPFLAGS=-I/usr/local/opt/qt@5.5/include
 export PKG_CONFIG_PATH=/usr/local/opt/qt@5.5/lib/pkgconfig
 export MONO_GAC_PREFIX=/usr/local
 export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
 export NVM_DIR=$HOME/.nvm
-
-source /usr/local/bin/virtualenvwrapper.sh
 
 prompt_ruby_info() {
   if [ -f '.ruby-version' ]; then
