@@ -51,7 +51,7 @@ HISTTIMEFORMAT='';
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git atom vi-mode)
+plugins=(atom bundler django encode gem git git-extras github last-working-dir node npm osx pip python rails ruby rvm sudo vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
