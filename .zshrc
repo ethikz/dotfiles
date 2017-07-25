@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$ZSH/custom/
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -51,6 +53,8 @@ HISTTIMEFORMAT='';
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git atom vi-mode)
+
+source $ZSH/oh-my-zsh.sh
 
 bindkey '^?' backward-delete-char
 bindkey '^W' backward-kill-word
