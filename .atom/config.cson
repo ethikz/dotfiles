@@ -1,7 +1,7 @@
 "*":
   "atom-beautify":
     general:
-      _analyticsUserId: "78e2be75-1b71-4e7a-a892-2f789f85091c"
+      _analyticsUserId: ""
     html:
       indent_inner_html: true
   core:
@@ -33,7 +33,7 @@
     tabLength: 2
     tabType: "soft"
   "exception-reporting":
-    userId: "0950ea6b-fe89-155b-5521-a00eb16fc3ba"
+    userId: ""
   "formatter-jsbeautify":
     css:
       enable: false
@@ -44,8 +44,8 @@
     sass:
       enable: false
   "ftp-remote-edit":
-    config: "50dd42def0a80c4fb43e9e6c390d04c5c9745c59a9e7d32e23d8c8f16fdccc6f72de36091c5b55dfcb654bb6d2b2e5b5fdb3726562abec8fdf0da3c76a1790f008638298d299b18c67b29b507ec06bca0446b58e9d828699c4814e"
-    password: "479613c2cceb0d01f4"
+    config: ""
+    password: ""
     reset: false
   jsformat:
     max_preserve_newlines: 2
@@ -59,13 +59,13 @@
     IE: false
     Opera: false
   "save-session":
-    dataSaveFolder: "/Users/Josh/.atom/packages/save-session/projects"
+    dataSaveFolder: "~/.atom/packages/save-session/projects"
   "seti-ui":
     themeColor: "Orange"
   "sync-settings":
-    _lastBackupHash: "ea0382a3640e8a33e289ab3d6c7a09c860b49832"
-    gistId: "9953b060422ccff26f83e85bc31d16af"
-    personalAccessToken: "cdd485ea84afb34bf7e741603a70b2a908d23eb7"
+    _lastBackupHash: ""
+    gistId: ""
+    personalAccessToken: ""
   "tabs-to-spaces": {}
   "tree-view":
     alwaysOpenExisting: true
