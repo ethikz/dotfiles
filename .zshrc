@@ -64,7 +64,7 @@ export BUNDLER_EDITOR=vim
 export EDITOR=vim
 export TERM=xterm
 export HISTCONTROL=ignoredups
-export MAVEN_HOME='/Users/Josh/Development/apache-maven-3.2.5/'
+export MAVEN_HOME='~/Development/apache-maven-3.2.5/'
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export MAVEN_OPTS='-Xmx2048m'
 
@@ -99,13 +99,13 @@ alias apack='apm list --installed --bare > ~/Development/dotfiles/.atom/atom_pac
 alias npmclean='rm -rf node_modules && npm install'
 alias gfr='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} fetch --all \;'
 alias ec='/Applications/eclipse/eclimd'
-alias tc-start='rm -f /Users/Josh/Development/apache-tomcat-7.0.59/logs/catalina.out; /Users/Josh/Development/apache-tomcat-7.0.59/bin/startup.sh'
+alias tc-start='rm -f ~/Development/apache-tomcat-7.0.59/logs/catalina.out; ~/Development/apache-tomcat-7.0.59/bin/startup.sh'
 alias tc-stop='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}")'
-alias tc-log='tail -f /Users/Josh/Development/apache-tomcat-7.0.59/logs/catalina.out'
+alias tc-log='tail -f ~/Development/apache-tomcat-7.0.59/logs/catalina.out'
 alias tc-restart='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}"); tc-start; tc-log'
-alias merc-lib='pushd /Users/Josh/Development/eTix/etix/web-mercury/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-mercury-etix/WEB-INF/lib/ lib; popd'
-alias etix-lib='pushd /Users/Josh/Development/eTix/etix/web/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-etix/WEB-INF/lib/ lib; popd'
-alias styleguide='pushd /Users/Josh/Development/eTix/etix/web/src/main/webapp/; ln -s ../../../target/web-etix/styleguide/ styleguide; popd'
+alias merc-lib='pushd ~/Development/eTix/etix/web-mercury/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-mercury-etix/WEB-INF/lib/ lib; popd'
+alias etix-lib='pushd ~/Development/eTix/etix/web/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-etix/WEB-INF/lib/ lib; popd'
+alias styleguide='pushd ~/Development/eTix/etix/web/src/main/webapp/; ln -s ../../../target/web-etix/styleguide/ styleguide; popd'
 alias build='mvn package war:exploded -Dmaven.test.skip=true'
 alias merc-build='mvn package war:exploded -Pmercury --projects parent,shared,mercury,web-mercury'
 alias aem-start='cd "$(dirname "$(find ~/ -type f -name aem-author-4502.jar | head -1)")" && java -Xmx1024m -jar aem-author-4502.jar -v'
