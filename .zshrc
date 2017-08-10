@@ -64,7 +64,6 @@ export BUNDLER_EDITOR=vim
 export EDITOR=vim
 export TERM=xterm
 export HISTCONTROL=ignoredups
-export MAVEN_HOME='~/Development/apache-maven-3.2.5/'
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export MAVEN_OPTS='-Xmx2048m'
 
