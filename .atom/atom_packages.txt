@@ -33,7 +33,6 @@ open-in-browsers@0.0.30
 open-recent@5.0.0
 perfectionist@1.4.0
 pigments@0.39.1
-save-session@0.15.7
 set-syntax@0.3.2
 seti-ui@1.8.0
 sorter@1.1.0
