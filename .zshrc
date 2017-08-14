@@ -66,9 +66,10 @@ export TERM=xterm
 export HISTCONTROL=ignoredups
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export MAVEN_OPTS='-Xmx2048m'
+export GEM_PATH='~/.rvm/gems/${latest_ruby}'
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:$HOME/.rvm/gems/${latest_ruby}/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:$PATH
+export PATH=$GEM_PATH/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:$PATH
 export LDFLAGS=-L/usr/local/opt/qt@5.5/lib
 export CPPFLAGS=-I/usr/local/opt/qt@5.5/include
 export PKG_CONFIG_PATH=/usr/local/opt/qt@5.5/lib/pkgconfig
