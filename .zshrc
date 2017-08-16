@@ -80,7 +80,6 @@ export NVM_DIR=$HOME/.nvm
 current_rvm_ruby() {
   which -a ruby | head -1
 }
-export -f current_rvm_ruby
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
