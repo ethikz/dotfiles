@@ -66,7 +66,7 @@ export TERM=xterm
 export HISTCONTROL=ignoredups
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export MAVEN_OPTS='-Xmx2048m'
-export GEM_PATH='~/.rvm/gems/${latest_ruby}'
+export GEM_PATH="${current_rvm_ruby}"
 
 # Customize to your needs...
 export PATH=$GEM_PATH/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:$PATH
@@ -77,11 +77,10 @@ export MONO_GAC_PREFIX=/usr/local
 export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
 export NVM_DIR=$HOME/.nvm
 
-prompt_ruby_info() {
-  if [ -f '.ruby-version' ]; then
-    cat .ruby-version
-  fi
+current_rvm_ruby() {
+  which -a ruby | head -1
 }
+export -f current_rvm_ruby
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
