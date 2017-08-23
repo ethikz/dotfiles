@@ -107,6 +107,7 @@ alias styleguide='pushd ~/Development/eTix/etix/web/src/main/webapp/; ln -s ../.
 alias build='mvn package war:exploded -Dmaven.test.skip=true'
 alias merc-build='mvn package war:exploded -Pmercury --projects parent,shared,mercury,web-mercury'
 alias aem-start='cd "$(dirname "$(find ~/ -type f -name aem-author-4502.jar | head -1)")" && java -Xmx1024m -jar aem-author-4502.jar -v'
+alias flush-cache='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
