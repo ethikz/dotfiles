@@ -12,7 +12,7 @@
       "Red Component" : 0.3333333432674408
     },
     "Custom Directory" : "No",
-    "Normal Font" : "DroidSansMonoForPowerline 12",
+    "Normal Font" : "FiraCode-Retina 12",
     "Bold Color" : {
       "Green Component" : 1,
       "Blue Component" : 1,
@@ -42,7 +42,7 @@
       "Blue Component" : 0.3333333432674408,
       "Red Component" : 0.3333333432674408
     },
-    "Ambiguous Double Width" : false,
+    "Ambiguous Double Width" : true,
     "Jobs to Ignore" : [
       "rlogin",
       "ssh",
@@ -83,7 +83,7 @@
     },
     "Custom Command" : "No",
     "ASCII Anti Aliased" : true,
-    "Non Ascii Font" : "DroidSansMonoForPowerline 12",
+    "Non Ascii Font" : "FiraCode-Retina 12",
     "Vertical Spacing" : 1,
     "Use Bold Font" : true,
     "Option Key Sends" : 0,

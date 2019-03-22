@@ -1,21 +1,41 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME='powerline'
-POWERLINE_HIDE_HOST_NAME='true'
-POWERLINE_GIT_CLEAN='😄'
-POWERLINE_GIT_DIRTY='😡'
-POWERLINE_GIT_ADDED='➕'
-POWERLINE_GIT_MODIFIED='📝'
-POWERLINE_GIT_DELETED='💥'
-POWERLINE_GIT_UNTRACKED='🙈'
-POWERLINE_GIT_RENAMED='🔠'
-POWERLINE_GIT_UNMERGED='➖'
+# ZSH_THEME='powerline'
+ZSH_THEME='spaceship'
+# POWERLINE_HIDE_HOST_NAME='true'
+# POWERLINE_GIT_CLEAN='😄'
+# POWERLINE_GIT_DIRTY='😡'
+# POWERLINE_GIT_ADDED='➕'
+# POWERLINE_GIT_MODIFIED='📝'
+# POWERLINE_GIT_DELETED='💥'
+# POWERLINE_GIT_UNTRACKED='🙈'
+# POWERLINE_GIT_RENAMED='🔠'
+# POWERLINE_GIT_UNMERGED='➖'
+
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stampts section
+  user          # Username section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  package       # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  xcode         # Xcode section
+  swift         # Swift section
+  php           # PHP section
+  venv          # virtualenv section
+  pyenv         # Pyenv section
+  ember         # Ember.js section
+  exec_time     # Execution time
+  line_sep      # Line break
+  vi_mode       # Vi-mode indicator
+  char          # Prompt character
+)
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -51,7 +71,7 @@ HISTTIMEFORMAT='';
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(atom bundler django encode gem git git-extras github last-working-dir node npm osx pip python rails ruby rvm sudo vi-mode web-search)
+plugins=(atom bundler encode gem git last-working-dir nvm rails ruby rvm vi-mode zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -65,45 +85,50 @@ export EDITOR=vim
 export TERM=xterm
 export HISTCONTROL=ignoredups
 export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 export MAVEN_OPTS='-Xmx2048m'
-export GEM_PATH="$(which -a ruby | head -1)"
+export CATALINA_OPTS='-Xmx2048m'
+export QT="$(brew --prefix qt)"
+export TF_AUTO_SAVE_CREDENTIALS=1
+export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
+export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+
+export LIFERAY_DIRECTORY=$HOME/Development/commercial-portal/server/dxp
+export WORKSPACE_DIRECTORY=$LIFERAY_DIRECTORY
 
 # Customize to your needs...
-export PATH=$GEM_PATH/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:./node/bin:./node_modules/.bin:$HOME/.rvm/bin:/usr/local/opt/sqlite/bin:/usr/local/opt/gettext/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:/usr/local/opt/python/libexec/bin:$PATH
-export LDFLAGS=-L/usr/local/opt/qt@5.5/lib
-export CPPFLAGS=-I/usr/local/opt/qt@5.5/include
-export PKG_CONFIG_PATH=/usr/local/opt/qt@5.5/lib/pkgconfig
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:$HOME/.rvm/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:/usr/local/opt/python/libexec/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
+export LDFLAGS=-L$QT/lib
+export CPPFLAGS=-I$QT/include
+export PKG_CONFIG_PATH=$QT/lib/pkgconfig
 export MONO_GAC_PREFIX=/usr/local
 export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
 export NVM_DIR=$HOME/.nvm
+export NODEJS_ORG_MIRROR=http://nodejs.org/dist
+export NODE_TLS_REJECT_UNAUTHORIZED=0
 
+# To be able to use latest version of him since I can't use homebrew because of SSL issues
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias ms-start='mysql.server start'
 alias ms-stop='mysql.server stop'
 alias redis='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist'
 alias mem='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist'
-alias rp='source ~/.profile'
-alias be='bundle exec '
-alias gc='git clone'
+alias rp='source ~/.zshrc'
 alias pm='python manage.py'
 alias ds_delete="sudo find . -name '*.DS_Store' -type f -delete"
 alias latest-ruby='prompt_ruby_info'
-alias apack='apm list --installed --bare > ~/Development/Personal/dotfiles/.atom/atom_packages.txt && cd ~/Development/Personal/dotfiles && git add .atom/atom_packages.txt && git commit -m "Updated packages" && git push'
-alias npmclean='rm -rf node_modules && npm install'
-alias gfr='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} fetch --all \;'
-alias ec='/Applications/eclipse/eclimd'
-alias tc-start='rm -f ~/Development/apache-tomcat-7.0.59/logs/catalina.out; ~/Development/apache-tomcat-7.0.59/bin/startup.sh'
+alias npmclean='rm -rf node_modules && npm i'
+alias tc-start='rm -f ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/logs/catalina.out; ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/bin/startup.sh'
 alias tc-stop='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}")'
-alias tc-log='tail -f ~/Development/apache-tomcat-7.0.59/logs/catalina.out'
+alias tc-log='tail -f ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/logs/catalina.out'
 alias tc-restart='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}"); tc-start; tc-log'
-alias merc-lib='pushd ~/Development/eTix/etix/web-mercury/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-mercury-etix/WEB-INF/lib/ lib; popd'
-alias etix-lib='pushd ~/Development/eTix/etix/web/src/main/webapp/WEB-INF/; ln -s ../../../../target/web-etix/WEB-INF/lib/ lib; popd'
-alias styleguide='pushd ~/Development/eTix/etix/web/src/main/webapp/; ln -s ../../../target/web-etix/styleguide/ styleguide; popd'
-alias build='mvn package war:exploded -Dmaven.test.skip=true'
-alias merc-build='mvn package war:exploded -Pmercury --projects parent,shared,mercury,web-mercury'
 alias aem-start='cd "$(dirname "$(find ~/ -type f -name aem-author-4502.jar | head -1)")" && java -Xmx1024m -jar aem-author-4502.jar -v'
 alias flush-cache='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
+alias gc='git clone'
+alias gcd1='git clone --depth 1'
+alias mp='sudo purge'
+alias mc="sh ~/osx-clean-memory.sh"
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
@@ -168,6 +193,11 @@ fi
 ###-end-npm-completion-###
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" && source "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh"
+
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -s "$HOME/lib/vsts-cli" ] && \. "$HOME/lib/vsts-cli"
