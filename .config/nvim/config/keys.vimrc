@@ -40,3 +40,9 @@ nmap <Leader><Leader>p :Prettier<CR>
 " => RangerExplorer
 """"""""""""""""""""""""""""
 noremap <C-o> :RangerExplorer<CR>
+
+
+""""""""""""""""""""""""""""
+" => NERDTree
+""""""""""""""""""""""""""""
+nnoremap <Leader>f :NERDTreeToggle<Enter>
