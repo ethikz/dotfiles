@@ -5,13 +5,11 @@ if type nvim > /dev/null 2>&1; then
 	alias vim='nvim'
 fi
 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME='powerline'
-ZSH_THEME='spaceship'
 # POWERLINE_HIDE_HOST_NAME='true'
 # POWERLINE_GIT_CLEAN='😄'
 # POWERLINE_GIT_DIRTY='😡'
@@ -21,6 +19,8 @@ ZSH_THEME='spaceship'
 # POWERLINE_GIT_UNTRACKED='🙈'
 # POWERLINE_GIT_RENAMED='🔠'
 # POWERLINE_GIT_UNMERGED='➖'
+
+ZSH_THEME='spaceship'
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stampts section
@@ -61,9 +61,9 @@ SPACESHIP_PROMPT_ORDER=(
 DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
 
-SAVEHIST=100
+SAVEHIST=1000
 HUSTFILE=~/.zsh_history
-HISTTIMEFORMAT='';
+HISTTIMEFORMAT=''
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -85,34 +85,52 @@ bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
+# History
+export HISTFILE=$HUSTFILE
+export HISTFILESIZE=$SAVEHIST
+export HISTCONTROL=ignoredups
+
+
+# Editor
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 export TERM=xterm
-export HISTCONTROL=ignoredups
+
+
+# Java
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 export MAVEN_OPTS='-Xmx2048m'
 export CATALINA_OPTS='-Xmx2048m'
-export QT="$(brew --prefix qt)"
-export TF_AUTO_SAVE_CREDENTIALS=1
-export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
+
+
+# Proxy/SSL
 export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
-export LIFERAY_DIRECTORY=$HOME/Development/commercial-portal/server/dxp
-export WORKSPACE_DIRECTORY=$LIFERAY_DIRECTORY
 
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:usr/local/lib:/usr/local/git/bin:$HOME/.rvm/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:/usr/local/opt/python/libexec/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
+# Compiler Flags
+export QT="$(brew --prefix qt)"
 export LDFLAGS=-L$QT/lib
 export CPPFLAGS=-I$QT/include
 export PKG_CONFIG_PATH=$QT/lib/pkgconfig
 export MONO_GAC_PREFIX=/usr/local
 export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
+
+
+# Homebrew
+export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
+
+
+# NVM and Node
 export NVM_DIR=$HOME/.nvm
 export NODEJS_ORG_MIRROR=http://nodejs.org/dist
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
-# To be able to use latest version of him since I can't use homebrew because of SSL issues
+
+# Customize to your needs...
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/lib:/usr/local/git/bin:$HOME/.rvm/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:/usr/local/opt/python/libexec/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/Library/PackageManager/bin:$PATH
+
+
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias ms-start='mysql.server start'
@@ -138,6 +156,7 @@ alias mc="sh ~/osx-clean-memory.sh"
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 ###-begin-npm-completion-###
 #
@@ -202,7 +221,9 @@ test -e "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" &
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then source $(brew --prefix)/etc/bash_completion; fi
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "$HOME/lib/vsts-cli" ] && \. "$HOME/lib/vsts-cli"
