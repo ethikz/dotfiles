@@ -12,7 +12,7 @@ nmap <Leader>f zf%
 """"""""""""""""""""""""""""""
 " => CtrlP
 """"""""""""""""""""""""""""""
-map <leader>C :CtrlPClearCache<cr>
+map <Leader>C :CtrlPClearCache<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -39,7 +39,8 @@ nmap <Leader><Leader>p :Prettier<CR>
 """"""""""""""""""""""""""""
 " => RangerExplorer
 """"""""""""""""""""""""""""
-noremap <C-o> :RangerExplorer<CR>
+" noremap <C-o> :RangerExplorer<CR>
+noremap <Leader><Leader>re :RangerExplorer<CR>
 
 
 """"""""""""""""""""""""""""

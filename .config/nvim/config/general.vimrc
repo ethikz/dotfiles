@@ -28,6 +28,8 @@ set splitright                " Split pane to right of buffer
 set equalalways               " Equal width pane
 set showmatch                 " Show matching brackets
 set number                    " Display line numbers
+autocmd VimResized * wincmd =	"	Set panes to equal width of window
+" set termguicolors
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,5 +75,8 @@ endif " has("autocmd")
 
 
 colorscheme onedark
-
 let g:onedark_termcolors=256
+
+" colorscheme nord
+" let g:nord_comment_brightness = 20
+

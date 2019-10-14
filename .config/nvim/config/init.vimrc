@@ -1,13 +1,19 @@
-call plug#begin('~/.nvim/plugged')
+call plug#begin( '~/.nvim/plugged' )
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'kien/ctrlp.vim'
-Plug 'renyard/vim-rangerexplorer'
+Plug 'iberianpig/ranger-explorer.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
+Plug 'neoclide/coc.nvim'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CtrlP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'kien/ctrlp.vim'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,14 +25,14 @@ Plug 'joshdick/onedark.vim'
 Plug 'lsdr/monokai'
 Plug 'trusktr/seti.vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'andreshazard/vim-freemarker'
-Plug 'clausreinke/typescript-tools.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -15,6 +15,7 @@ let g:airline_linecolumn_prefix = '¶'
 let g:airline_enable_branch     = '⎇ '
 let g:airline_paste_symbol      = '⇲'
 let g:airline_theme             = 'onedark'
+" let g:airline_theme             = 'nord'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_type = 0
@@ -39,3 +40,4 @@ let g:airline#extensions#whitespace#enabled = 0
 " => Lightline
 """"""""""""""""""""""""""""
 let g:lightline = { 'colorscheme': 'onedark' }
+" let g:lightline = { 'colorscheme': 'nord' }
