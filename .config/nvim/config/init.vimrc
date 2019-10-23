@@ -7,13 +7,13 @@ call plug#begin( '~/.nvim/plugged' )
 Plug 'iberianpig/ranger-explorer.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
-Plug 'neoclide/coc.nvim'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'kien/ctrlp.vim'
+Plug 'DavidEGx/ctrlp-smarttabs'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,7 +32,7 @@ Plug 'arcticicestudio/nord-vim'
 " => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'andreshazard/vim-freemarker'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
