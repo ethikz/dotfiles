@@ -8,13 +8,25 @@ Plug 'iberianpig/ranger-explorer.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
 
+if !has('nvim')
+    Plug 'rhysd/vim-healthcheck'
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source Control
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'shumphrey/fugitive-gitlab.vim'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'kien/ctrlp.vim'
 Plug 'DavidEGx/ctrlp-smarttabs'
-
+Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Aesthetics
@@ -31,17 +43,19 @@ Plug 'arcticicestudio/nord-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'andreshazard/vim-freemarker'
+Plug 'gorodinskiy/vim-coloresque'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ciaranm/detectindent'
+Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'Townk/vim-autoclose'
 
 

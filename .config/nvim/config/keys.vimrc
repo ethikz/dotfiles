@@ -1,12 +1,14 @@
 """"""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""
-
 " Override read-only permissions
 cmap w!! %!sudo tee > /dev/null %
 
 " folding
 nmap <Leader>f zf%
+
+" remove trailing whitespaces
+command! FixWhitespace :%s/\s\+$//e
 
 
 """"""""""""""""""""""""""""""
