@@ -16,6 +16,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Control
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -27,6 +28,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Aesthetics
@@ -57,6 +59,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'Townk/vim-autoclose'
+Plug 'alvan/vim-closetag'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
