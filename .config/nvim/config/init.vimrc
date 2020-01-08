@@ -20,6 +20,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'whiteinge/diffconflicts'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -50,6 +51,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'andreshazard/vim-freemarker'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'gorodinskiy/vim-coloresque'
+Plug 'artur-shaik/vim-javacomplete2'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -61,6 +63,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'Townk/vim-autoclose'
 Plug 'alvan/vim-closetag'
+Plug 'godlygeek/tabular'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
