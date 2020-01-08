@@ -48,6 +48,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'andreshazard/vim-freemarker'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'gorodinskiy/vim-coloresque'
 
 
