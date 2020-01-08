@@ -24,3 +24,10 @@ map <C-h> <C-w><Left>
 " => ESLint / Stylelint
 """"""""""""""""""""""""""""
 nmap <Leader><Leader>fj :Fixmyjs<CR>
+
+
+""""""""""""""""""""""""""""
+" => DiffConflicts
+""""""""""""""""""""""""""""
+nmap <Leader><Leader>dc :DiffConflicts<CR>
+

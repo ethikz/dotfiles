@@ -5,12 +5,10 @@ syntax enable                 " Enable syntax highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on     " Enable filetype-specific plugins, indenting and detection
 set autoread                  " Autoread when file changed from outside
 set nofoldenable              " Not close folds
 set paste                     " Paste text unmodified
 set pastetoggle=<F3>          " Toggle paste and nopaste
-set nocompatible              " vim, not vi
 set ttyfast                   " Fast terminal
 set backspace=2
 
@@ -44,7 +42,8 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set smartindent               " Insert extra level of indent
+filetype plugin indent on     " Enable filetype-specific plugins, indenting and detection
+set autoindent                " Insert extra level of indent
 set tabstop=2                 " # of spaces Tab in file uses
 set softtabstop=2             " # of spaces Tab uses while editing
 set shiftwidth=2              " # of spaces to use for auto indent
