@@ -55,7 +55,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'andreshazard/vim-freemarker'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'natebosch/vim-lsc'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
