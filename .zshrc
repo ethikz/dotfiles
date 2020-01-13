@@ -1,5 +1,11 @@
+# Profiling
+# `use zprof | less` after the shell has loaded to analyze calls
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
+
+source $HOME/.pathrc
 
 if type nvim > /dev/null 2>&1; then
 	alias vim='nvim'
@@ -42,71 +48,95 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+. ${HOME}/.zsh-change-case
 
 # Uncomment following line if you want to disable command autocorrection
 DISABLE_CORRECTION=true
 DISABLE_UPDATE_PROMPT=true
-
 SAVEHIST=1000
-HUSTFILE=~/.zsh_history
+HUSTFILE=$HOME/.zsh_history
 HISTTIMEFORMAT=''
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler gem git last-working-dir nvm rails ruby rvm vi-mode zsh-autosuggestions)
+plugins=(
+  alias-tips
+  auto-color-ls
+  autoupdate
+  bundler
+  caniuse
+  command-time
+  gem
+  git
+  last-working-dir
+  oh-my-matrix
+  nvm
+  rails
+  ruby
+  rvm
+  undollar
+  vi-mode
+  zsh-autosuggestions
+  zsh-completions
+  zsh-safe-rm
+  zsh-sdkman
+)
 
 source $ZSH/oh-my-zsh.sh
+
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticable delay to zsh startup.  This little hack restricts
+# it to once a day.
+autoload -Uz compinit
+for dump in $HOME/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+# set autoload path
+fpath=(~/.oh-my-zsh/custom/functions "${fpath[@]}")
+
+# move cursor to end of line after history search completion
+autoload -Uz bcp bip bup cani fp gst kp ks ll lx utils vmc vmi
+
+# every time we load .zshrc, ditch duplicate path entries
+typeset -U PATH fpath
 
 bindkey '^?' backward-delete-char
 bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
+
+# ~/.dircolors/themefile
+# test -r '~/.dir_colors' && eval $(dircolors ~/.dir_colors)
+eval $(gdircolors ~/.dircolors/dircolors.one-dark)
+
 # History
 export HISTFILE=$HUSTFILE
 export HISTFILESIZE=$SAVEHIST
 export HISTCONTROL=ignoredups
 
-
 # Editor
 export BUNDLER_EDITOR=vim
 export EDITOR=vim
 export TERM=xterm
-
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 
 # Java
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+# export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME=$HOME/.sdkman/candidates
 export MAVEN_OPTS='-Xmx2048m'
 export CATALINA_OPTS='-Xmx2048m'
-
+export GRADLE_HOME=$HOME/.sdkman/candidates
 
 # Proxy/SSL
-export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
-
+# export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+# export NGROK_ROOT_CA_PATH=/usr/local/etc/openssl/certs/cert.pem
 
 # Compiler Flags
 export QT="$(brew --prefix qt)"
@@ -116,19 +146,19 @@ export PKG_CONFIG_PATH=$QT/lib/pkgconfig
 export MONO_GAC_PREFIX=/usr/local
 export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
 
+# FZF
+export FZF_DEFAULT_OPTS='--height=50% --min-height=15 --reverse'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 # Homebrew
 export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
 
-
 # NVM and Node
 export NVM_DIR=$HOME/.nvm
+export NVM_VERSION="$(nvm which current)"
 export NODEJS_ORG_MIRROR=http://nodejs.org/dist
-export NODE_TLS_REJECT_UNAUTHORIZED=0
-
-
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/lib:/usr/local/git/bin:$HOME/.rvm/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/qt@5.5/bin:$JAVA_HOME/bin:/usr/local/opt/python/libexec/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/Library/PackageManager/bin:$PATH
+# export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 
 alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
@@ -140,23 +170,33 @@ alias mem='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist'
 alias rp='source ~/.zshrc'
 alias pm='python manage.py'
 alias ds_delete="sudo find . -name '*.DS_Store' -type f -delete"
-alias latest-ruby='prompt_ruby_info'
-alias npmclean='rm -rf node_modules && npm i'
-alias tc-start='rm -f ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/logs/catalina.out; ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/bin/startup.sh'
-alias tc-stop='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}")'
-alias tc-log='tail -f ~/Development/commercial-portal/server/dxp/tomcat-8.0.32/logs/catalina.out'
-alias tc-restart='kill -9 $(ps -ef|grep tomcat|grep -v grep|awk "{print \$2}"); tc-start; tc-log'
-alias aem-start='cd "$(dirname "$(find ~/ -type f -name aem-author-4502.jar | head -1)")" && java -Xmx1024m -jar aem-author-4502.jar -v'
-alias flush-cache='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
-alias gc='git clone'
-alias gcd1='git clone --depth 1'
+alias flush='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
 alias mp='sudo purge'
 alias mc="sh ~/osx-clean-memory.sh"
+alias ga='git add .'
+alias gc='git clone'
+alias gcd1='git clone --depth 1'
+alias gco='git commit -m \${1}'
+alias gd='git diff'
+alias gdt='git difftool'
+alias gmt='git mergetool'
+alias gp='git push \${1} \${2}'
+alias gco='git checkout \${1} \${2}'
+alias gpl='git pull \${1} \${2}'
+alias grb='git rebase \${1} \${2}'
+alias gs='git status'
+alias la='ls -al'
+alias lf='ls -al | grep \${1}'
+alias ls='ls -Gl'
+alias u='utils'
+alias vcp='vim +PlugClean +qall'
+alias vip='vim +PlugInstall +qall'
+alias vup='vim +PlugUpdate'
+alias lscleanup='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
 
 # added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
+test -e "$HOME/.travis/travis.sh" && "$HOME/.travis/travis.sh"
+test -e "$NVM_DIR/nvm.sh" && source "$NVM_DIR/nvm.sh"
 
 ###-begin-npm-completion-###
 #
@@ -165,7 +205,6 @@ alias mc="sh ~/osx-clean-memory.sh"
 # Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
 # Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
 #
-
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword
@@ -216,12 +255,19 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
 test -e "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" && source "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh"
+test -e "$HOME/.rvm/scripts/rvm" && source "$HOME/.rvm/scripts/rvm"
+test -e "$NVM_DIR/bash_completion" && source "$NVM_DIR/bash_completion"
+test -e "$HOME/lib/vsts-cli" && source "$HOME/lib/vsts-cli"
+test -e "$HOME/.autojump/etc/profile.d/autojump.sh" && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+export SDKMAN_DIR=$HOME/.sdkman
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+test -e "$SDKMAN_DIR/bin/sdkman-init.sh" && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+test -e "$HOME/.fzf.zsh" && source "$HOME/.fzf.zsh"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -s "$HOME/lib/vsts-cli" ] && \. "$HOME/lib/vsts-cli"
+# zprof
+source /Users/c88199/.npm-run.plugin.zsh/npm-run.plugin.zsh
+

@@ -7,8 +7,9 @@ call plug#begin( '~/.nvim/plugged' )
 Plug 'iberianpig/ranger-explorer.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'SirVer/ultisnips'
+Plug 'AndrewRadev/splitjoin.vim'
 
-if !has('nvim')
+if !has( 'nvim' )
     Plug 'rhysd/vim-healthcheck'
 endif
 
@@ -29,6 +30,9 @@ Plug 'whiteinge/diffconflicts'
 Plug 'kien/ctrlp.vim'
 Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -46,12 +50,13 @@ Plug 'arcticicestudio/nord-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'sheerun/vim-polyglot'
 Plug 'andreshazard/vim-freemarker'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'artur-shaik/vim-javacomplete2'
+Plug 'natebosch/vim-lsc'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,6 +69,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Townk/vim-autoclose'
 Plug 'alvan/vim-closetag'
 Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -70,6 +70,16 @@ if has( "autocmd" )
           \   exe "normal! g`\"" |
           \ endif
   augroup END
+
+  augroup Windows
+    au!
+    au BufEnter,WinEnter,WinNew,VimResized *,*.*
+          \ let &scrolloff=getwininfo(win_getid())[0]['height']/2      " keep cursor centered
+    au FocusGained,VimEnter,WinEnter,BufWinEnter * setlocal cursorline " enable cursorline in focussed buffer
+    au FocusGained,VimEnter,WinEnter,BufWinEnter * :checktime          " reload file if it has changed on disk
+    au WinLeave,FocusLost * setlocal nocursorline                      " disable cursorline when leaving buffer
+    au VimResized * wincmd =                                           " auto resize splits on resize
+  augroup END
 endif " has("autocmd")
 
 
@@ -78,4 +88,3 @@ let g:onedark_termcolors=256
 
 " colorscheme nord
 " let g:nord_comment_brightness = 20
-
