@@ -56,7 +56,6 @@ Plug 'andreshazard/vim-freemarker'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'natebosch/vim-lsc'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
