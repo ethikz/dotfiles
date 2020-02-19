@@ -10,6 +10,9 @@ export PATH=$PATH:/usr/local/share/npm/bin:/usr/local/lib/node_modules
 # RVM
 export PATH=$PATH:$HOME/.rvm/bin
 
+# Gems
+export PATH=$PATH:$(ruby -e 'puts Gem.bindir')
+
 # SDKMan
 export SDKMAN_DIR=$HOME/.sdkman
 

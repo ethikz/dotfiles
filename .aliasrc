@@ -1,0 +1,48 @@
+#-------------------------------------------------------------
+# Aliases for Git.
+#-------------------------------------------------------------
+alias amend='git commit --amend --no-edit'
+alias changelog='gitmoji-changelog'
+alias ga='git add .'
+alias gc='git clone'
+alias gcd1='git clone --depth 1'
+alias gco='git commit -m \${1}'
+alias gd='git diff'
+alias gdt='git difftool'
+alias gmt='git mergetool'
+alias gp='git push \${1} \${2}'
+alias gco='git checkout \${1} \${2}'
+alias gpl='git pull \${1} \${2}'
+alias grb='git rebase \${1} \${2}'
+alias gs='git status'
+
+#-------------------------------------------------------------
+# Aliases for general stuff.
+#-------------------------------------------------------------
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ds_delete="sudo find . -name '*.DS_Store' -type f -delete"
+alias flush='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
+alias la='ls -al'
+alias lf='ls -al | grep \${1}'
+alias ls='ls -Gl'
+alias lscleanup='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
+alias mc='sh ~/osx-clean-memory.sh'
+alias mp='sudo purge'
+alias pm='python manage.py'
+alias rp='source ~/.zshrc'
+alias u='utils'
+alias vcp='vim +PlugClean +qall'
+alias vip='vim +PlugInstall +qall'
+alias vup='vim +PlugUpdate'
+
+#-------------------------------------------------------------
+# Aliases for Homebrew
+#-------------------------------------------------------------
+alias mem='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist'
+alias ms-start='mysql.server start'
+alias ms-stop='mysql.server stop'
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias redis='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist'

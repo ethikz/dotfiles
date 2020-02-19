@@ -5,7 +5,10 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
-source $HOME/.pathrc
+test -e "$HOME/.pathrc" && source "$HOME/.pathrc"
+test -e "$HOME/.aliasrc" && source "$HOME/.aliasrc"
+test -e "$HOME/.localrc" && source "$HOME/.localrc"
+
 
 if type nvim > /dev/null 2>&1; then
 	alias vim='nvim'
@@ -52,7 +55,8 @@ SPACESHIP_PROMPT_ORDER=(
 
 # Uncomment following line if you want to disable command autocorrection
 DISABLE_CORRECTION=true
-DISABLE_UPDATE_PROMPT=true
+# DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE="true"
 SAVEHIST=1000
 HUSTFILE=$HOME/.zsh_history
 HISTTIMEFORMAT=''
@@ -86,7 +90,7 @@ plugins=(
   zsh-sdkman
 )
 
-source $ZSH/oh-my-zsh.sh
+test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 
 # On slow systems, checking the cached .zcompdump file to see if it must be
 # regenerated adds a noticable delay to zsh startup.  This little hack restricts
@@ -111,7 +115,6 @@ bindkey '^W' backward-kill-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
-
 # ~/.dircolors/themefile
 # test -r '~/.dir_colors' && eval $(dircolors ~/.dir_colors)
 eval $(gdircolors ~/.dircolors/dircolors.one-dark)
@@ -128,15 +131,11 @@ export TERM=xterm
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 
 # Java
-# export JAVA_HOME="$(/usr/libexec/java_home)"
-export JAVA_HOME=$HOME/.sdkman/candidates
+export JAVA_HOME="$(/usr/libexec/java_home)"
+# export JAVA_HOME=$HOME/.sdkman/candidates
 export MAVEN_OPTS='-Xmx2048m'
 export CATALINA_OPTS='-Xmx2048m'
 export GRADLE_HOME=$HOME/.sdkman/candidates
-
-# Proxy/SSL
-# export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
-# export NGROK_ROOT_CA_PATH=/usr/local/etc/openssl/certs/cert.pem
 
 # Compiler Flags
 export QT="$(brew --prefix qt)"
@@ -158,41 +157,6 @@ export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
 export NVM_DIR=$HOME/.nvm
 export NVM_VERSION="$(nvm which current)"
 export NODEJS_ORG_MIRROR=http://nodejs.org/dist
-# export NODE_TLS_REJECT_UNAUTHORIZED=0
-
-
-alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias ms-start='mysql.server start'
-alias ms-stop='mysql.server stop'
-alias redis='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist'
-alias mem='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist'
-alias rp='source ~/.zshrc'
-alias pm='python manage.py'
-alias ds_delete="sudo find . -name '*.DS_Store' -type f -delete"
-alias flush='sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches'
-alias mp='sudo purge'
-alias mc="sh ~/osx-clean-memory.sh"
-alias ga='git add .'
-alias gc='git clone'
-alias gcd1='git clone --depth 1'
-alias gco='git commit -m \${1}'
-alias gd='git diff'
-alias gdt='git difftool'
-alias gmt='git mergetool'
-alias gp='git push \${1} \${2}'
-alias gco='git checkout \${1} \${2}'
-alias gpl='git pull \${1} \${2}'
-alias grb='git rebase \${1} \${2}'
-alias gs='git status'
-alias la='ls -al'
-alias lf='ls -al | grep \${1}'
-alias ls='ls -Gl'
-alias u='utils'
-alias vcp='vim +PlugClean +qall'
-alias vip='vim +PlugInstall +qall'
-alias vup='vim +PlugUpdate'
-alias lscleanup='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
 
 # added by travis gem
 test -e "$HOME/.travis/travis.sh" && "$HOME/.travis/travis.sh"
@@ -255,10 +219,8 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
-
 test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
 test -e "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" && source "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh"
-test -e "$HOME/.rvm/scripts/rvm" && source "$HOME/.rvm/scripts/rvm"
 test -e "$NVM_DIR/bash_completion" && source "$NVM_DIR/bash_completion"
 test -e "$HOME/lib/vsts-cli" && source "$HOME/lib/vsts-cli"
 test -e "$HOME/.autojump/etc/profile.d/autojump.sh" && source "$HOME/.autojump/etc/profile.d/autojump.sh"
@@ -269,5 +231,4 @@ test -e "$SDKMAN_DIR/bin/sdkman-init.sh" && source "$SDKMAN_DIR/bin/sdkman-init.
 test -e "$HOME/.fzf.zsh" && source "$HOME/.fzf.zsh"
 
 # zprof
-source /Users/c88199/.npm-run.plugin.zsh/npm-run.plugin.zsh
-
+test -e "$HOME/.npm-run.plugin.zsh/npm-run.plugin.zsh" && source "$HOME/.npm-run.plugin.zsh/npm-run.plugin.zsh"
