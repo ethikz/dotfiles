@@ -1,234 +1,124 @@
-# Profiling
-# `use zprof | less` after the shell has loaded to analyze calls
-# zmodload zsh/zprof
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-test -e "$HOME/.pathrc" && source "$HOME/.pathrc"
-test -e "$HOME/.aliasrc" && source "$HOME/.aliasrc"
-test -e "$HOME/.localrc" && source "$HOME/.localrc"
-
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
 if type nvim > /dev/null 2>&1; then
 	alias vim='nvim'
 fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME='powerline'
-# POWERLINE_HIDE_HOST_NAME='true'
-# POWERLINE_GIT_CLEAN='😄'
-# POWERLINE_GIT_DIRTY='😡'
-# POWERLINE_GIT_ADDED='➕'
-# POWERLINE_GIT_MODIFIED='📝'
-# POWERLINE_GIT_DELETED='💥'
-# POWERLINE_GIT_UNTRACKED='🙈'
-# POWERLINE_GIT_RENAMED='🔠'
-# POWERLINE_GIT_UNMERGED='➖'
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-ZSH_THEME='spaceship'
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
-  user          # Username section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-  xcode         # Xcode section
-  swift         # Swift section
-  php           # PHP section
-  venv          # virtualenv section
-  pyenv         # Pyenv section
-  ember         # Ember.js section
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  char          # Prompt character
-)
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-. ${HOME}/.zsh-change-case
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Uncomment following line if you want to disable command autocorrection
-DISABLE_CORRECTION=true
-# DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE="true"
-SAVEHIST=1000
-HUSTFILE=$HOME/.zsh_history
-HISTTIMEFORMAT=''
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  alias-tips
-  auto-color-ls
-  autoupdate
-  bundler
-  caniuse
-  command-time
-  gem
+  aliases
   git
-  last-working-dir
-  oh-my-matrix
-  nvm
-  rails
-  ruby
-  rvm
-  undollar
-  vi-mode
-  zsh-autosuggestions
-  zsh-completions
-  zsh-safe-rm
-  zsh-sdkman
 )
 
-test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
+source $ZSH/oh-my-zsh.sh
 
-# On slow systems, checking the cached .zcompdump file to see if it must be
-# regenerated adds a noticable delay to zsh startup.  This little hack restricts
-# it to once a day.
-autoload -Uz compinit
-for dump in $HOME/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+# User configuration
 
-# set autoload path
-fpath=(~/.oh-my-zsh/custom/functions "${fpath[@]}")
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# move cursor to end of line after history search completion
-autoload -Uz bcp bip bup cani fp gst kp ks ll lx utils vmc vmi
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# every time we load .zshrc, ditch duplicate path entries
-typeset -U PATH fpath
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-bindkey '^?' backward-delete-char
-bindkey '^W' backward-kill-word
-bindkey '^R' history-incremental-search-backward
-bindkey '^F' history-incremental-search-forward
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# ~/.dircolors/themefile
-# test -r '~/.dir_colors' && eval $(dircolors ~/.dir_colors)
-eval $(gdircolors ~/.dircolors/dircolors.one-dark)
-
-# History
-export HISTFILE=$HUSTFILE
-export HISTFILESIZE=$SAVEHIST
-export HISTCONTROL=ignoredups
-
-# Editor
-export BUNDLER_EDITOR=vim
-export EDITOR=vim
-export TERM=xterm
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
-
-# Java
-export JAVA_HOME="$(/usr/libexec/java_home)"
-# export JAVA_HOME=$HOME/.sdkman/candidates
-export MAVEN_OPTS='-Xmx2048m'
-export CATALINA_OPTS='-Xmx2048m'
-export GRADLE_HOME=$HOME/.sdkman/candidates
-
-# Compiler Flags
-export QT="$(brew --prefix qt)"
-export LDFLAGS=-L$QT/lib
-export CPPFLAGS=-I$QT/include
-export PKG_CONFIG_PATH=$QT/lib/pkgconfig
-export MONO_GAC_PREFIX=/usr/local
-export DYLD_FALLBACK_LIBRARY_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib:/usr/local/lib:/usr/lib
-
-# FZF
-export FZF_DEFAULT_OPTS='--height=50% --min-height=15 --reverse'
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-
-# Homebrew
-export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/6.2.2
-
-# NVM and Node
-export NVM_DIR=$HOME/.nvm
-export NVM_VERSION="$(nvm which current)"
-export NODEJS_ORG_MIRROR=http://nodejs.org/dist
-
-# added by travis gem
-test -e "$HOME/.travis/travis.sh" && "$HOME/.travis/travis.sh"
-test -e "$NVM_DIR/nvm.sh" && source "$NVM_DIR/nvm.sh"
-
-###-begin-npm-completion-###
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
-if type complete &>/dev/null; then
-  _npm_completion () {
-    local words cword
-    if type _get_comp_words_by_ref &>/dev/null; then
-      _get_comp_words_by_ref -n = -n @ -w words -i cword
-    else
-      cword="$COMP_CWORD"
-      words=("${COMP_WORDS[@]}")
-    fi
-//
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${words[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -o default -F _npm_completion npm
-elif type compdef &>/dev/null; then
-  _npm_completion() {
-    local si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef _npm_completion npm
-elif type compctl &>/dev/null; then
-  _npm_completion () {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K _npm_completion npm
-fi
-###-end-npm-completion-###
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
-test -e "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" && source "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh"
-test -e "$NVM_DIR/bash_completion" && source "$NVM_DIR/bash_completion"
-test -e "$HOME/lib/vsts-cli" && source "$HOME/lib/vsts-cli"
-test -e "$HOME/.autojump/etc/profile.d/autojump.sh" && source "$HOME/.autojump/etc/profile.d/autojump.sh"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export SDKMAN_DIR=$HOME/.sdkman
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-test -e "$SDKMAN_DIR/bin/sdkman-init.sh" && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-test -e "$HOME/.fzf.zsh" && source "$HOME/.fzf.zsh"
-
-# zprof
-test -e "$HOME/.npm-run.plugin.zsh/npm-run.plugin.zsh" && source "$HOME/.npm-run.plugin.zsh/npm-run.plugin.zsh"
+export NODE_TLS_REJECT_UNAUTHORIZED=0
