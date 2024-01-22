@@ -1,13 +1,13 @@
 return {
-  -- { "olimorris/onedarkpro.nvim", priority = 1000 },
-  {
-    "polirritmico/monokai-nightasty.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      dark_style_background = "transparent",
-    },
-  },
+  { "olimorris/onedarkpro.nvim", priority = 1000 },
+  -- {
+  --   "polirritmico/monokai-nightasty.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     dark_style_background = "transparent",
+  --   },
+  -- },
   -- {
   --   "scottmckendry/cyberdream.nvim",
   --   lazy = false,
@@ -25,8 +25,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "monokai-nightasty",
-      -- colorscheme = "onedark_vivid",
+      -- colorscheme = "monokai-nightasty",
+      colorscheme = "onedark_vivid",
       -- colorscheme = "cyberdream",
     },
   },
