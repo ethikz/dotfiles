@@ -13,10 +13,13 @@ return {
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+      'windwp/nvim-autopairs',
     },
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+
+      require('nvim-autopairs').setup()
       require('luasnip.loaders.from_vscode').lazy_load()
       luasnip.config.setup {}
 
@@ -28,6 +31,9 @@ return {
         },
         completion = {
           completeopt = 'menu,menuone,noinsert',
+        },
+        experimental = {
+          ghost_text = true
         },
         mapping = cmp.mapping.preset.insert {
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -60,8 +66,10 @@ return {
         },
         sources = {
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'buffer', max_item_count = 5 },
+          { name = 'copilot' },
           { name = 'path' },
+          { name = 'luasnip' },
         },
       }
     end

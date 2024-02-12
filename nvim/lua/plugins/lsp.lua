@@ -59,7 +59,9 @@ return {
       end
 
       require('mason').setup()
-      require('mason-lspconfig').setup()
+      require('mason-lspconfig').setup({
+        automatic_installation = true
+      })
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -74,8 +76,15 @@ return {
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
-        -- tsserver = {},
-        -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+        tsserver = {
+          settings = {
+            experimental = {
+              enableProjectDiagnostics = true
+            }
+          }
+        },
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        tailwindcss = {},
 
         lua_ls = {
           Lua = {

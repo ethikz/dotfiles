@@ -31,6 +31,9 @@ return {
             ".png",
             ".svg",
             ".jpg",
+            ".git",
+            ".next",
+            ".nuxt"
           },
         },
       }
@@ -52,7 +55,7 @@ return {
 
         -- Find the Git root directory from the current file's path
         local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-        [1]
+            [1]
         if vim.v.shell_error ~= 0 then
           print 'Not a git repository. Searching on current working directory'
           return cwd
@@ -82,6 +85,10 @@ return {
           previewer = false,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
+
+      vim.keymap.set('n', '<leader>fp',
+        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        { desc = "Find Plugin File" })
 
       local function telescope_live_grep_open_files()
         require('telescope.builtin').live_grep {

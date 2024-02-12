@@ -11,7 +11,7 @@ return {
       vim.defer_fn(function()
         require('nvim-treesitter.configs').setup {
           -- Add languages to be installed here that you want installed for treesitter
-          ensure_installed = { 'lua', 'python', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'json', 'yaml', 'html', 'css', 'markdown', 'graphql', 'scss', 'vue' },
+          ensure_installed = { 'lua', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'json', 'yaml', 'html', 'css', 'markdown', 'graphql', 'scss', 'vue' },
 
           -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
           auto_install = false,
@@ -23,6 +23,7 @@ return {
           modules = {},
           highlight = { enable = true },
           indent = { enable = true },
+          autopairs = { enable = true },
           incremental_selection = {
             enable = true,
             keymaps = {
