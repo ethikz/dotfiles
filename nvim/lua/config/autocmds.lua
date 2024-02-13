@@ -62,3 +62,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup("eslint_formt"),
+  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js", "*.vue" },
+  command = "silent! EslintFixAll",
+})
